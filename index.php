@@ -13,26 +13,42 @@
     $books= [
         [
             "title" => "The first book",
-            "Author" => "The first Author",
+            "Author" => "Author1",
             "publish-date" => "1395",
-            "price" => "100000"
+            "price" => 100000
+        ],
+        [
+            "title" => "The new first book",
+            "Author" => "Author1",
+            "publish_date" => "1395",
+            "price" => 100000
         ],
         [
             "title" => "The second book",
             "Author" => "The second Author",
             "publish-date" => "1399",
-            "price" => "200000"
+            "price" => 200000
         ],
         [
             
             "title" => "The third book",
             "Author" => "The third Author",
             "publish-date" => "1401",
-            "price" => "350000"
+            "price" => 350000
         ]
     ];
-    // var_dump($books);
-    // die();
+    function filterByAuthor($books,$author)
+    {
+        $filteredbook = [];
+        foreach($books as $book)
+        {
+            if($book['Author']==$author)
+            {
+                $filteredbook[] = $book;
+            }
+        }
+        return $filteredbook;
+    }
     ?>
     <!-- <h1>This is the third session coding</h1> -->
     <h3>Book List :</h3>
@@ -44,13 +60,13 @@
             <th> Price </th>
         </thead>
         <tbody>
-            <?php foreach($books as $book){ ?>
+            <?php foreach(filterByAuthor($books,'The third Author') as $book): ?>
                 <tr>
-                    <?php foreach($book as $key => $value){ ?>
-                    <td> <?= $value ?> </td>
-                    <?php } ?>
+                    <?php foreach($book as $key=>$value): ?>
+                        <td><?= $value ?></td>
+                    <?php endforeach ?>    
                 </tr>
-            <?php } ?>
+            <?php endforeach ?>
         </tbody>
     </table>
 </body>
