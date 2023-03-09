@@ -30,28 +30,35 @@
             "price" => 200000
         ],
         [
-            
+
             "title" => "The third book",
             "Author" => "The third Author",
             "publish-date" => "1401",
             "price" => 350000
         ]
     ];
-    function filterByAuthor($books,$author)
+    function filter($books,$fn)
     {
         $filteredbook = [];
         foreach($books as $book)
         {
-            if($book['Author']==$author)
+            if($fn($book))
             {
                 $filteredbook[] = $book;
             }
         }
         return $filteredbook;
     }
+    $filteredbook = filter($books,function($book){
+        if($book['price'] <=200000)
+        {
+            return true;
+        }
+        return false;
+    })
     ?>
-    <!-- <h1>This is the third session coding</h1> -->
-    <h3>Book List :</h3>
+  <!-- <h1>This is the third session coding</h1> -->
+  <h3>Book List :</h3>
     <table class="table table-bordered table-dark">
         <thead>
             <th> Title </th>
@@ -60,12 +67,12 @@
             <th> Price </th>
         </thead>
         <tbody>
-            <?php foreach(filterByAuthor($books,'The third Author') as $book): ?>
+            <?php foreach($filteredbook as $book): ?>
                 <tr>
                     <?php foreach($book as $key=>$value): ?>
                         <td><?= $value ?></td>
                     <?php endforeach ?>    
-                </tr>
+                </tr>    
             <?php endforeach ?>
         </tbody>
     </table>
