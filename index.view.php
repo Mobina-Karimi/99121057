@@ -28,10 +28,5 @@
             <?php endforeach ?>
         </tbody>
     </table>
-    <div>
-        <?php 
-            $db = connectToDB();
-        ?>
-    </div>
 </body>
 </html>
