@@ -1,17 +1,17 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "webprogramming";
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $dbname = "webprogramming";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password,$dbname);
+    // $conn = new mysqli($servername, $username, $password,$dbname);
 
     // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-      exit("connect successfully");
+    // if ($conn->connect_error) {
+    //   die("Connection failed: " . $conn->connect_error);
+    // }
+    //   exit("connect successfully");
 
     $books= [
         [
