@@ -1,24 +1,25 @@
 <?php
-    // include 'book.php';
     include 'functions.php';
-    // $book = new book();
-    // $book->title = 'The first title';
-    // $book->author = 'Author1';
+    require('database.php');
 
-    // dd($book);
-    // echo('<pre>');
-    // var_dump($book);
-    // $book -> about();
+    $config = require('config.php');
+    // $db = new Database($config);
+    $db = new Database($config,'root','');
+    $id = $_GET['id'];
+    // dd($id);
 
+    // $books = $db -> query("SELECT * FROM books WHERE title='book number2'") -> fetchAll();
+    // $books = $db -> query("SELECT * FROM books WHERE title LIKE '%book number2%'") -> fetch(PDO::FETCH_OBJ);
+    // $books = $db -> query("SELECT * FROM books WHERE title LIKE '%book number2%'") -> fetchAll(PDO::FETCH_ASSOC);
+    // $books = $db -> query("SELECT * FROM books WHERE title LIKE '%book%'") -> fetchAll(PDO::FETCH_ASSOC);
 
-    // $servername = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $dbname = "webprogramming";
-    $dsn = 'mysql:host=localhost;port=3306;dbname=webprogramming;charset=utf8mb4;';
-    $pdo = new PDO($dsn, 'root');
-    $statement = $pdo -> prepare('SELECT * FROM books');
-    $statement -> execute();
-    $books = $statement -> fetchAll();
-    dd($books);
+    // $query = "SELECT * FROM users WHERE id=$id";
+    $query = "SELECT * FROM users WHERE id= :id";
+    // $user = $db -> query($query) -> fetch(PDO::FETCH_ASSOC);
+    $user = $db -> query($query,['id'=>$id]) -> fetch(PDO::FETCH_ASSOC);
+    dd($user);
+
+    // dd($books);
+    // dd($books -> title);
+    // dd($books['title']);
 ?>
