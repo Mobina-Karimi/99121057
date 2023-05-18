@@ -5,4 +5,3 @@
             'dbname' => 'webprogramming',
             'charset' => 'utf8mb4'
         ];
-?>
