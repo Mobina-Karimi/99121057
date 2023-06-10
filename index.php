@@ -3,3 +3,4 @@
     // var_dump(urlIs('/'));
     // die();
     require('route.php');
+    require('response.php');

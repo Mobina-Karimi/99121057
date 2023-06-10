@@ -11,15 +11,9 @@
     ];
     function routeToController($uri, $routes)
     {
-
         $controller = array_key_exists($uri,$routes)? $routes[$uri]:null;
         $controller = $controller?  require($controller):abort();
 
-    }
-    function abort($code='404')
-    {
-        http_response_code($code);
-        require("views/{$code}.view.php");
     }
 
     routeToController($uri, $routes);
